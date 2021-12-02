@@ -1,37 +1,49 @@
 const canva = document.getElementById('canva');
 const clear = document.getElementById('clear');
-let gridSize = document.getElementById('gridSize');
-let colorButton = document.getElementById('colorButton')
-
-
-
+const gridSize = document.getElementById('gridSize');
+const colorButton = document.getElementById('colorButton');
+const rainbowButton = document.getElementById('rainbowButton');
+const eraser = document.getElementById('eraser');
 let gridSizeValue = gridSize.value;
 let gridSizeValueSquared = Math.pow(gridSize.value, 2);
+let colorChoice = colorButton.value;
+let currentMode = 'default';
+
+
 
 function setGridSize(newSize) {
     gridSizeValue = newSize;
 }
 
-gridSize.onchange = (e) => setGridSize(e.target.value); 
-
-gridSize.addEventListener('change', function () {
-        clearCanva();
-});
-
-
-
-
-let colorChoice = colorButton.value;
+function setCurrentMode(newMode) {
+    currentMode = newMode;
+} 
 
 function setColor(newColor) {
     colorChoice = newColor;
 }
 
 colorButton.onchange = (e) => setColor(e.target.value);
+colorButton.onclick = () => setCurrentMode('default');
+rainbowButton.onclick = () => setCurrentMode('rainbow');
+eraser.onclick = () => setCurrentMode('eraser');
+gridSize.onchange = (e) => setGridSize(e.target.value);
+
+
+gridSize.addEventListener('change', function () {
+        clearCanva();
+});
 
 function draw(e) {
-    e.target.style.backgroundColor = colorChoice;
+    if (currentMode === 'default') {
+       e.target.style.backgroundColor = colorChoice; 
+    } else if (currentMode === 'rainbow') {
+        e.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    } else if (currentMode === 'eraser') {
+        e.target.style.backgroundColor = 'white';
+    }
 }
+
 
 function setUpGrid() {
     canva.style.gridTemplateColumns = `repeat(${gridSizeValue}, 1fr)`;

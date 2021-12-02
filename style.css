@@ -17,6 +17,7 @@ h1 {
     height: 10cm;
     border: 1px solid black;
     margin-left: 16px;
+    background-color: white;
 }
 
 #container {
@@ -37,6 +38,9 @@ button {
 }
 
 #gridSize {
-    background: red;
+    -webkit-appearance: none;
+    background: rgb(64, 64, 247);
     direction: rtl;
+    border-radius: 12px;
+    height: 12px;
 }
