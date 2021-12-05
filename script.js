@@ -32,12 +32,15 @@ rainbowButton.onclick = () => setCurrentMode('rainbow');
 pencil.onclick = () => setCurrentMode('pencil');
 eraser.onclick = () => setCurrentMode('eraser');
 gridSize.onchange = (e) => setGridSize(e.target.value);
+
+//Set the state of the mouse. Window event listener is necessary in case the user
+//release the mouse outside of the page.
 canva.onmousedown = () => setMouseState('down');
 window.addEventListener('mouseup', function() {
     setMouseState('up');
 })
 
-//Disable the drag function on the canva to prevent the click and drag bug.// 
+//Disable the drag function on the canva to prevent the click and drag bug.
 canva.ondragstart = function(){return false;};
 
 
