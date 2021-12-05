@@ -7,6 +7,7 @@ const eraser = document.getElementById('eraser');
 const pencil = document.getElementById('pencil');
 let colorChoice = colorButton.value;
 let currentMode = 'default';
+let mouseState = 'up';
 
 function setGridSize(newSize) {
     gridSizeValue = newSize;
@@ -21,23 +22,36 @@ function setColor(newColor) {
     colorChoice = newColor;
 }
 
+function setMouseState(state) {
+    mouseState = state;
+}
+
 colorButton.onchange = (e) => setColor(e.target.value);
 colorButton.onclick = () => setCurrentMode('default');
 rainbowButton.onclick = () => setCurrentMode('rainbow');
 pencil.onclick = () => setCurrentMode('pencil');
 eraser.onclick = () => setCurrentMode('eraser');
 gridSize.onchange = (e) => setGridSize(e.target.value);
+canva.onmousedown = () => setMouseState('down');
+window.addEventListener('mouseup', function() {
+    setMouseState('up');
+})
+
+//Disable the drag function on the canva to prevent the click and drag bug.// 
+canva.ondragstart = function(){return false;};
 
 
 function draw(e) {
-    if (currentMode === 'default') {
-       e.target.style.backgroundColor = colorChoice; 
-    } else if (currentMode === 'rainbow') {
-        e.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else if (currentMode === 'eraser') {
-        e.target.style.backgroundColor = 'white';
-    } else if (currentMode === 'pencil') {
-        e.target.style.backgroundColor = 'gray';
+    if (mouseState === 'down') {
+        if (currentMode === 'default') {
+            e.target.style.backgroundColor = colorChoice; 
+        } else if (currentMode === 'rainbow') {
+            e.target.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        } else if (currentMode === 'eraser') {
+            e.target.style.backgroundColor = 'white';
+        } else if (currentMode === 'pencil') {
+            e.target.style.backgroundColor = `hsl(0, 1%, 90%)`;
+        }
     }
 }
 
