@@ -16,7 +16,7 @@ body {
 
 @font-face {
     font-family: buttons-font;
-    src: url(font/buttons/PressStart2P.ttf);
+    src: url(font/buttons/Super\ Mario\ Bros.\ 2.ttf);
 }
 
 
@@ -29,8 +29,6 @@ h1 {
 
 #canva {
     display: grid;
-    /* grid-template-columns: repeat(24, 1fr); */
-    /* grid-template-rows: repeat(16, 1fr); */
     width: 10cm;
     height: 10cm;
     border: 1px solid black;
@@ -38,6 +36,7 @@ h1 {
     background-color: white;
     border: 3px solid black;
     border-radius: 8px;
+    /* cursor: url(images/pencil.png) 0 32, auto; */
 }
 
 #container {
@@ -51,7 +50,7 @@ h1 {
     height: 9.2cm;
     gap: 18px;
     align-items: center;
-    background-color: hsl(360, 100%, 100%, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     padding: 16px;
     border: 3px solid black;
     border-radius: 8px;
@@ -59,22 +58,53 @@ h1 {
     font-size: 12px;
 }
 
-/* input[type=button] {
-    font-family: buttons-font;
-    font-size: 14px;
-} */
-
 button {
     padding: 8px 16px;
-    /* width: 80px; */
     font-family: buttons-font;
     font-size: 12px;
 }
 
+/* If you are a TOP student, this article was helpful to change the style of the input range: */
+/* https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+
+/* Slider track - Common between browsers */
 #gridSize {
     -webkit-appearance: none;
-    background: rgb(64, 64, 247);
+    background: rgb(0, 96, 255);
     direction: rtl;
     border-radius: 12px;
     height: 12px;
+    padding: 0px;
+    font: inherit;
+    box-sizing: border-box;
+    opacity: 0.8;
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    border: 2px solid black;
 }
+
+#gridSize:hover {
+    opacity: 1;
+}
+
+/* Slider thumb - Mozilla */
+#gridSize::-moz-range-thumb {
+    width: 12px; /* Set a specific slider handle width */
+    height: 18px; /* Slider handle height */
+    border-radius: 6px;
+    background: rgb(255, 222, 59); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: 2px solid black;
+}
+
+/* Slider thumb - Chrome, Opera, Safari, Edge */
+#gridSize::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 15px; /* Set a specific slider handle width */
+    height: 22px; /* Slider handle height */
+    border-radius: 6px;
+    background: rgb(255, 222, 59); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: 2px solid black;
+  }
