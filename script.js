@@ -9,6 +9,8 @@ let colorChoice = colorButton.value;
 let currentMode = 'default';
 let mouseState = 'up';
 
+canva.style.cursor = 'url(images/pencil.png) 0 32, auto';
+
 function setGridSize(newSize) {
     gridSizeValue = newSize;
     clearCanva();
