@@ -103,6 +103,8 @@ function setUpGrid() {
 setUpGrid();
 
 function clearCanva() {
+    setCurrentMode('default');
+    canva.style.cursor = 'url(images/pencil.png) 0 32, auto';
     canva.innerHTML = '';
     setUpGrid();
 };
